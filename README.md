@@ -86,3 +86,14 @@ you can asign actual value as a type. it's usefull when you wanna check the data
 - rest parameters : it's always considerd as an array at the end
 
 - never type: return error (inifinite roop)
+
+## type assertions
+
+TypeScript has a feature which can guess the type by termes or any information inside the code. So we don't have to define a type for all of values or arguments.
+
+Type Assertion is a feature that we can over ride the type is guessed by TypeScript.
+
+- `as`
+- `<>`
+- `unknown`
+- `!` : Non-null assertion operator

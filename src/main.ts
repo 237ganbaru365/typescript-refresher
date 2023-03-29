@@ -1,54 +1,47 @@
-// type aliases
-type stringOrNumber = string | number;
-type stringOrNumberArr = stringOrNumber[];
+type One = string;
+type Two = string | number;
+type Three = "hello";
 
-interface Guitarist {
-  name?: string;
-  active: boolean;
-  album: stringOrNumberArr;
-}
+// convert to more or less specific
+let a: One = "hello";
+let b = a as Two; // less specific
+let c = a as Three; // more specific
 
-// literal types
-let myName: "Fumina";
-let userName: "Fumina" | "Yoshimura" | 237;
-// userName = "Kishanti";
+// can't use these anger bracket in react
+let d = <One>"world";
+let e = <string | number>"world";
 
-type multipleNumFunc = (a: number, b: number) => number;
-
-// interface multipleNumFunc {
-//   (a: number, b: number): number;
-// }
-
-let sampleFunc: multipleNumFunc = function (c, d) {
-  return c * d;
-};
-
-console.log(sampleFunc(2, 3));
-
-const addAll = (a: number, b: number, c?: number): number => {
-  if (typeof c !== "undefined") {
-    return a + b + c;
+// use case of assertion
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: "add" | "concat"
+): number | string => {
+  if (c === "add") {
+    return a + b;
   }
 
-  return a + b;
+  return "" + a + b;
 };
 
-const createErr = (errMsg: string) => {
-  throw new Error(errMsg);
-};
+let myVal: string = addOrConcat(2, 2, "concat") as string;
 
-// custom type guard
-const isNumber = (value: any): boolean => {
-  return typeof value === "number" ? true : false;
-};
+// Be careful! TS sees no problem - but a string is returned
+let nextVal: number = addOrConcat(2, 2, "concat") as number;
 
-// you can not leave just return with set type for return value
-// use of the never type
-const numberOrString = (val: number | string): string => {
-  if (typeof val === "string") {
-    return "string";
-  } else if (isNumber(val)) {
-    return "number";
-  }
-  return createErr("This should never happen!");
-};
+// 10 as string;
+10 as unknown as string; // NOT RECCOMMEND
+
+// The DOM (good reason to have assertions)
+const img = document.querySelector("img")!;
+const myImg = document.getElementById("#img") as HTMLImageElement;
+const nextImg = <HTMLImageElement>document.getElementById("#img");
+
+// img.src;
+// myImg.src;
+// nextImg.src;
+
+const curYear = new Date().getFullYear().toString();
+const yearEl = document.getElementById("year")!;
+
+yearEl.innerHTML = curYear;

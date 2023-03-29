@@ -1,35 +1,30 @@
 "use strict";
-// literal types
-let myName;
-let userName;
-// interface multipleNumFunc {
-//   (a: number, b: number): number;
-// }
-let sampleFunc = function (c, d) {
-    return c * d;
-};
-console.log(sampleFunc(2, 3));
-const addAll = (a, b, c) => {
-    if (typeof c !== "undefined") {
-        return a + b + c;
+// convert to more or less specific
+let a = "hello";
+let b = a; // less specific
+let c = a; // more specific
+// can't use these anger bracket in react
+let d = "world";
+let e = "world";
+// use case of assertion
+const addOrConcat = (a, b, c) => {
+    if (c === "add") {
+        return a + b;
     }
-    return a + b;
+    return "" + a + b;
 };
-const createErr = (errMsg) => {
-    throw new Error(errMsg);
-};
-// custom type guard
-const isNumber = (value) => {
-    return typeof value === "number" ? true : false;
-};
-// you can not leave just return with set type for return value
-// use of the never type
-const numberOrString = (val) => {
-    if (typeof val === "string") {
-        return "string";
-    }
-    else if (isNumber(val)) {
-        return "number";
-    }
-    return createErr("This should never happen!");
-};
+let myVal = addOrConcat(2, 2, "concat");
+// Be careful! TS sees no problem - but a string is returned
+let nextVal = addOrConcat(2, 2, "concat");
+// 10 as string;
+10; // NOT RECCOMMEND
+// The DOM (good reason to have assertions)
+const img = document.querySelector("img");
+const myImg = document.getElementById("#img");
+const nextImg = document.getElementById("#img");
+// img.src;
+// myImg.src;
+// nextImg.src;
+const curYear = new Date().getFullYear().toString();
+const yearEl = document.getElementById("year");
+yearEl.innerHTML = curYear;
