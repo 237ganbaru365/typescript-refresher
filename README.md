@@ -36,3 +36,30 @@ after that, you can add `tsc -w`, and then automatically compile js file in `./b
   : try not compile any tsfiles if they have any type error
 - `tsc --noEmitOnError -w`
   : another option to do so witout editing tsconfig
+
+## Terminology
+
+- statically typed language : TypeScript
+- dynamically typed language : JavaScript
+
+- Implicit : JS define the types impicity, because it is dynamically typed language which means after compiling, JS try to understand what types the value has
+- Explicit : TS wanna make sure what type the value has
+
+- Union tpe : you can set more then one type using `|`
+- `RegExp` type
+- Tuple : `[string, number, boolean]` this strictry cares the exact same position and type in array. It is not same with `['a', 1, true]` without type definition
+
+- type : `type TYPENAME = {}` you can define type
+- interface : `interface TYPENAME {}`
+
+- ? : if you use `?`, and then it could be optional
+
+- Enums : 数値列挙型。　初期値がない場合、上から順番に数値が当てられる。一部が定義されている場合はその数値を基準にインクリメントされる。
+
+```
+ex) enum Months {
+  January = 1,
+  ...,
+  December
+}
+```

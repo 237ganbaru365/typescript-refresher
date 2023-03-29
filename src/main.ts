@@ -1,9 +1,37 @@
-let username = "John";
-console.log(username);
+let strArr = ["a", "b", "c"];
 
-let a: number = 12;
-let b: string = "6";
-let c: number = 2;
+let mixArr = [1, 2, "3", true];
 
-console.log(a / b);
-console.log(c * b);
+mixArr[0] = "hello";
+
+let myObj: object;
+myObj = [];
+console.log(typeof myObj);
+
+type Sample = {
+  name: string;
+  active?: boolean;
+  album: (string | number)[];
+};
+
+let evh: Sample = {
+  name: "Fumina",
+  active: false,
+  album: [1, 2, "a"],
+};
+
+let func = (evh: Sample) => {
+  return `Hello, ${evh.name}!`;
+};
+
+console.log(func(evh));
+
+enum Grade {
+  U = 1,
+  D,
+  C,
+  B,
+  A,
+}
+
+console.log(Grade.U);
