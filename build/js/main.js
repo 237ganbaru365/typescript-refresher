@@ -1,25 +1,35 @@
 "use strict";
-let strArr = ["a", "b", "c"];
-let mixArr = [1, 2, "3", true];
-mixArr[0] = "hello";
-let myObj;
-myObj = [];
-console.log(typeof myObj);
-let evh = {
-    name: "Fumina",
-    active: false,
-    album: [1, 2, "a"],
+// literal types
+let myName;
+let userName;
+// interface multipleNumFunc {
+//   (a: number, b: number): number;
+// }
+let sampleFunc = function (c, d) {
+    return c * d;
 };
-let func = (evh) => {
-    return `Hello, ${evh.name}!`;
+console.log(sampleFunc(2, 3));
+const addAll = (a, b, c) => {
+    if (typeof c !== "undefined") {
+        return a + b + c;
+    }
+    return a + b;
 };
-console.log(func(evh));
-var Grade;
-(function (Grade) {
-    Grade[Grade["U"] = 1] = "U";
-    Grade[Grade["D"] = 2] = "D";
-    Grade[Grade["C"] = 3] = "C";
-    Grade[Grade["B"] = 4] = "B";
-    Grade[Grade["A"] = 5] = "A";
-})(Grade || (Grade = {}));
-console.log(Grade.U);
+const createErr = (errMsg) => {
+    throw new Error(errMsg);
+};
+// custom type guard
+const isNumber = (value) => {
+    return typeof value === "number" ? true : false;
+};
+// you can not leave just return with set type for return value
+// use of the never type
+const numberOrString = (val) => {
+    if (typeof val === "string") {
+        return "string";
+    }
+    else if (isNumber(val)) {
+        return "number";
+    }
+    return createErr("This should never happen!");
+};

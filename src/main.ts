@@ -1,37 +1,54 @@
-let strArr = ["a", "b", "c"];
+// type aliases
+type stringOrNumber = string | number;
+type stringOrNumberArr = stringOrNumber[];
 
-let mixArr = [1, 2, "3", true];
-
-mixArr[0] = "hello";
-
-let myObj: object;
-myObj = [];
-console.log(typeof myObj);
-
-type Sample = {
-  name: string;
-  active?: boolean;
-  album: (string | number)[];
-};
-
-let evh: Sample = {
-  name: "Fumina",
-  active: false,
-  album: [1, 2, "a"],
-};
-
-let func = (evh: Sample) => {
-  return `Hello, ${evh.name}!`;
-};
-
-console.log(func(evh));
-
-enum Grade {
-  U = 1,
-  D,
-  C,
-  B,
-  A,
+interface Guitarist {
+  name?: string;
+  active: boolean;
+  album: stringOrNumberArr;
 }
 
-console.log(Grade.U);
+// literal types
+let myName: "Fumina";
+let userName: "Fumina" | "Yoshimura" | 237;
+// userName = "Kishanti";
+
+type multipleNumFunc = (a: number, b: number) => number;
+
+// interface multipleNumFunc {
+//   (a: number, b: number): number;
+// }
+
+let sampleFunc: multipleNumFunc = function (c, d) {
+  return c * d;
+};
+
+console.log(sampleFunc(2, 3));
+
+const addAll = (a: number, b: number, c?: number): number => {
+  if (typeof c !== "undefined") {
+    return a + b + c;
+  }
+
+  return a + b;
+};
+
+const createErr = (errMsg: string) => {
+  throw new Error(errMsg);
+};
+
+// custom type guard
+const isNumber = (value: any): boolean => {
+  return typeof value === "number" ? true : false;
+};
+
+// you can not leave just return with set type for return value
+// use of the never type
+const numberOrString = (val: number | string): string => {
+  if (typeof val === "string") {
+    return "string";
+  } else if (isNumber(val)) {
+    return "number";
+  }
+  return createErr("This should never happen!");
+};

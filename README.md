@@ -23,9 +23,9 @@ you can make separate dir to store build files and src files.
 
 after that, you can add `tsc -w`, and then automatically compile js file in `./build/js/*`
 
-### NOTE
-
-- the reason compiled js use `let` is the compiler targets ES2016 in tsconfig as you can see ` "target": "es2016"`. You can also roll back to let them compile using `var` by editing that.
+```
+the reason compiled js use `let` is the compiler targets ES2016 in tsconfig as you can see ` "target": "es2016"`. You can also roll back to let them compile using `var` by editing that.
+```
 
 3. change setting
 
@@ -63,3 +63,26 @@ ex) enum Months {
   December
 }
 ```
+
+## Type Alies
+
+you can reuse type alies for oher value
+
+`type` : type alies (without propery name)
+`interface` : class defenision
+
+both are almost same, but they use different syntax or rules
+
+## Literal types
+
+you can asign actual value as a type. it's usefull when you wanna check the data if it has exact same value you want.
+
+## Functions
+
+- void type: function not have return should be void type
+
+- default params: default types cannot access any function with default params
+
+- rest parameters : it's always considerd as an array at the end
+
+- never type: return error (inifinite roop)
