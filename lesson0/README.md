@@ -97,3 +97,9 @@ Type Assertion is a feature that we can over ride the type is guessed by TypeScr
 - `<>`
 - `unknown`
 - `!` : Non-null assertion operator
+
+## class
+
+- `public` : you can avoid redone
+- `private` : you cannot access outside of the class, but can touch it inside method (in the class)
+- `protected` : you cannot access neither outside or inside of the class
